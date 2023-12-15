@@ -5,14 +5,6 @@
 static Placeholder<OneWireNg_CurrentPlatform> ow;
 DSTherm drv(ow);
 
-/*double getTemperature(const DSTherm::Scratchpad& scrpd)
-{
-  
-  double tempD=scrpd.getTemp()/1000.0;
-  //Serial1.println(tempD,3);
-  return tempD;
-}*/
-
 double getTemperature()
 {  /* convert temperature on all sensors connected... */
   drv.convertTempAll(DSTherm::MAX_CONV_TIME);
@@ -34,10 +26,6 @@ void setup()
 {
   new (&ow) OneWireNg_CurrentPlatform(PIN_PD7, false);
   Serial1.begin(9600);
-
-/*#if (CONFIG_MAX_SEARCH_FILTERS > 0)//????????
-    drv.filterSupportedSlaves();
-#endif*/
 }
 
 void loop()
